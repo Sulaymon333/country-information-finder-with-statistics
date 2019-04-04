@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Country information finder | Sort by name, capital city and population</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+  <div class="country-finder-app">
+    <div class="title-input-result-text">
+      <div class="title">
+        <h1>Find your favourite country information</h1>
+      </div>
+      <div id="inputs">
+        <input id="input" type="text" placeholder="Search countries by name, capital city or population" autofocus />
+        <div class="actions">
+          <button class="button" id="name">Sort by Name</button>
+          <button class="button" id="capital">Sort by Capital</button>
+          <button class="button" id="population">Sort by Population</button>
+        </div>
+      </div>
+      <div id="result-text">
+        <h3 class="message">
+
+        </h3>
+      </div>
+    </div>
+    <div class="countries-container"></div>
+    <div class="chart-container"></div>
+  </div>
+  <script src="./js/countries_information.js"></script>
+  <script src="./js/index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+when user's keyup, 
+  provide any result that matches the input texts
+    country name, capital, language,  statistic chart compared to world population.
+
+when search by name button is clicked,
+  sort by country names instead
+    ability to sort both descending and ascending orders
+
+when search by capital button is clicked,
+  sort by country capital instead
+    ability to sort both descending and ascending orders
+
+when search by population button is clicked,
+  sort by country population instead
+    ability to sort both descending and ascending orders
+
+when search by statistic button is clicked,
+  show statistics chart, it has two buttons - population language (10 most)
+  ability to sort both descending and ascending orders
+
+
+  countryUI
+  filter
+  sort countries
+  reverse country
+  count languages
+  langs[]
+  langsSet[]
+  langsObj[]
+
+  then sort the langsObj
+
+  let a = 2;
+  let b = 3;
+
+  const object = {a, b}
+  is the same as  
+  const object = {a:2, b:3}

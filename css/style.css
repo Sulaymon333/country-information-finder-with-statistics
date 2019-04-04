@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700');
+
+/* CSS reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background-image: url(../img/chris-lawton-346402-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  /* height: 100vh;
+  width: 100vw; */
+  /* overflow-x: hidden; */
+}
+
+#inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#inputs input {
+  width: 100%;
+}
+
+.actions {
+  margin-top: 25px;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+h1,
+h3 {
+  color: rgb(113, 117, 121);
+  color: rgb(43, 43, 44);
+}
+
+.title {
+  padding-bottom: 15px;
+  line-height: 1.2;
+  margin: 30px;
+}
+
+.country-finder-app {
+  text-align: center;
+  padding: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.title-input-result-text {
+  width: 45%;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 50px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0px 6px 12px -4px rgba(87, 86, 86, 0.5);
+}
+
+input {
+  font-size: 17px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 40px;
+  border: none;
+  outline: none;
+  letter-spacing: 0.25px;
+  caret-color: rgba(0, 0, 0, 0.8);
+}
+
+input::-webkit-input-placeholder {
+  font-size: 15px;
+}
+
+.input::-webkit-input-placeholder {
+  color: red;
+  font-size: 15px;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.button {
+  padding: 5px 20px;
+  border-radius: 5px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  background: #fff;
+  color: rgb(43, 43, 44);
+}
+
+.selected-button {
+  background: linear-gradient(to right,
+    rgba(46, 157, 248, 0.781),
+    rgba(0, 140, 255, 0.89));
+  color: white;
+  transition: 0.2s ease;
+  font-weight: 400;
+}
+
+#starts {
+  flex-basis: 30%;
+}
+
+#contains {
+  flex-basis: 30%;
+}
+
+#sort {
+  flex-basis: 30%;
+}
+
+.button:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  transition: transform 0.4s ease-in-out;
+  box-shadow: 0px 6px 12px -4px rgba(87, 86, 86, 0.5);
+}
+
+#result-text {
+  margin-top: 30px;
+  padding-top: 15px;
+  font-size: 15px;
+}
+
+h1 {
+  font-weight: 400;
+}
+
+h3 {
+  font-weight: 400;
+}
+
+.countries-container {
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.country {
+  width: 120px;
+  margin: 6px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  font-size: 15px;
+  /* box-shadow: 0px 22px 12px -4px rgba(87, 86, 86, 0.5); */
+}
+
+/* .country div {
+  width: 130px;
+} */
+
+.country div img {
+  height: 60px;
+  width: 100%;
+}
+
+.country h1 {
+  font-size: 12px;
+}
+
+.country h2 {
+  /* width: 100%; */
+  font-size: 14px;
+}
+
+.country p {
+  /* width: 100%; */
+  font-size: 9px;
+  margin-top: 10px;
+}
+
+
+.country:hover {
+  transform: rotate(-1deg) scale(1.03);
+}
+
+/* .country:hover h1 {
+  font-size: 16px;
+}
+
+.country:hover p {
+  font-size: 11px;
+} */
+
+.total-countries {
+  font-weight: bolder;
+}
+
+@media (max-width: 960px) {
+  .title-input-result-text {
+    width: 80%;
+  }
+}
+
+@media (max-width: 600px) {
+  .actions {}
+}
+
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  width: 90%;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.chart-bar {
+  background: linear-gradient( to bottom right, rgb(231, 156, 15) ,rgb(214, 156, 49));
+  background: orange;
+  height: 30px;
+  text-align: left;
+  padding-left: 5px; 
+  padding-right: 5px; 
+  /* line-height: 10px; */
+  
+}
+.chart-bar span {
+  font-size: 9px;
+  font-weight: 700;
+}
