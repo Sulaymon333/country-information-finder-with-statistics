@@ -12,6 +12,9 @@ const countriesContainer = document.querySelector('.countries-container');
 const chartsModal = document.querySelector('.charts-modal');
 const closeButton = document.querySelector('.close-button');
 const modalStatisticsContent = document.querySelector('.modal-statistics-content');
+const graphs = document.querySelector('.graphs');
+const modalControlPopulation = document.querySelector('#modal-control-population');
+const modalControlLanguage = document.querySelector('#modal-control-language');
 const chartPopulationContainer = document.querySelector('.population-chart-container');
 const chartLanguageContainer = document.querySelector('.language-chart-container');
 
@@ -73,7 +76,7 @@ const filterCountriesBySearchTerm = (arr, searchTerm) => {
 // get the clicked button siblings
 
 /*=== ButtonChanger() function ===*/
-const buttonSiblings = n => [...n.parentElement.children].filter(currentButton => currentButton.nodeType === 1 && currentButton != n)
+const buttonSiblings = buttonName => [...buttonName.parentElement.children].filter(currentButton => currentButton.nodeType === 1 && currentButton != buttonName)
 
 /*=== inputEvent() function ===*/
 const inputEvent = (e) => {
@@ -149,14 +152,40 @@ const sortByPopulation = () => {
 /*=== MODAL Functionality ===*/
 // show modal toggle function
 const toggleModal = () => {
+  statisticsModalButton.classList.add('selected-button')
+  const otherButtons = buttonSiblings(statisticsModalButton)
+  otherButtons.forEach((button) => {
+    if (button.classList.contains('selected-button')) {
+      button.classList.remove('selected-button')
+    }
+  })
   chartsModal.classList.toggle('show-modal');
 }
-
 // window click function
 const windowOnclick = (e) => {
   if (e.target === chartsModal) {
     toggleModal()
   }
+}
+const buttonSelected = (buttonName) => {
+  buttonName.classList.add('selected-button')
+  const otherButtons = buttonSiblings(buttonName)
+  otherButtons.forEach((button) => {
+    if (button.classList.contains('selected-button')) {
+      button.classList.remove('selected-button')
+    }
+  })
+}
+
+const populationChart = () => {
+  buttonSelected(modalControlPopulation)
+  graphs.innerHTML = '';
+  buildChartsPopulation(tenMostPopulous);
+}
+const languageChart = () => {
+  buttonSelected(modalControlLanguage)
+  graphs.innerHTML = '';
+  buildChartsLanguage(tenMostSpokenLanguages)
 }
 
 
@@ -178,48 +207,35 @@ statisticsModalButton.addEventListener('click', toggleModal);
 closeButton.addEventListener('click', toggleModal);
 window.addEventListener('click', windowOnclick);
 
+modalControlPopulation.addEventListener('click', populationChart);
+modalControlLanguage.addEventListener('click', languageChart);
+
 
 // World population graph
 
 const entirePopulationData = [];
 let worldPopulation;
-const filteredPopulationData = (arr) => {
-  arr.forEach(country => {
-    let { name, population } = country
-    entirePopulationData.push({ name, population });
-  })
+countriesCopy.forEach(country => {
+  let { name, population } = country
+  entirePopulationData.push({ name, population });
+})
+const entirePopulationDataCopy = [...entirePopulationData]
+// console.log(entirePopulationDataCopy)
 
-  const tenMostPopulous = entirePopulationData.slice().sort((a, b) => {
-    if (a.population < b.population) {
-      return 1;
-    } if (a.population > b.population) {
-      return -1
-    } return 0
-  }).slice(0, 10);
-  
-  return tenMostPopulous;
-}
+const tenMostPopulous = entirePopulationDataCopy.sort((a, b) => {
+  if (a.population < b.population) {
+    return 1;
+  } if (a.population > b.population) {
+    return -1
+  } return 0
+}).slice(0, 10);
+
 // get world population
 worldPopulation = entirePopulationData.reduce((total, element) => (total + element.population), 0);
 // console.log(worldPopulation);
 
-const buildCharts = (arr) => {
-  arr.forEach(element => {
-    const div = document.createElement('div');
-    div.classList.add('chart-population-bar');
-    const population = element.population >= 1000000000 ? element.population.toString().slice(0, 1) + '.' + element.population.toString().slice(1, 3) + 'B' : element.population.toString().slice(0, 3) + 'M';
-    div.innerHTML = `<span>${element.name} - ${population}</span>`;
-    div.style.width = `${(element.population / 1377422166) * 100}%`;
-    
-    div.style.borderRadius = '0px 20px 20px 0px';
-    chartPopulationContainer.appendChild(div);
-  })
-}
 
-// buildCharts(filteredPopulationData(countriesCopy));
-
-
-const buildCharts2 = (arr) => {
+const buildChartsPopulation = (arr) => {
   arr.forEach(element => {
     const div = document.createElement('div');
     div.classList.add('chart-population-bar');
@@ -227,11 +243,12 @@ const buildCharts2 = (arr) => {
     div.innerHTML = `<span>${element.name} - ${population}</span>`;
     div.style.width = `${(element.population / 1377422166) * 100}%`;
     div.style.borderRadius = '0px 20px 20px 0px';
-    modalStatisticsContent.appendChild(div);
+    graphs.appendChild(div);
   })
 }
 
-buildCharts2(filteredPopulationData(countriesCopy));
+buildChartsPopulation(tenMostPopulous);
+
 
 /*=== World language graph ===*/
 
@@ -255,17 +272,15 @@ let uniqueLanguagesArray = [...uniqueLanguagesSet]
 // count number of times each language repeats itself
 let sortRepeatedLanguage = [];
 uniqueLanguagesArray.forEach(item1 => {
-  let LanguageMatchInBothArrays = entireLanguageData.filter(item => { return item1 === item })
-  sortRepeatedLanguage.push(LanguageMatchInBothArrays);
+  let languageMatchInBothArrays = entireLanguageData.filter(item => { return item1 === item })
+  sortRepeatedLanguage.push(languageMatchInBothArrays);
 })
 
-console.log(sortRepeatedLanguage);
+// console.log(sortRepeatedLanguage);
 
 // get the number of times each language repeats itself.
 const numberLang = sortRepeatedLanguage.map(item => item.length);
 
-// console.log(uniqueLanguagesArray);
-// console.log(numberLang);
 
 // set the entire language name and frequency into one big object
 let languageNumberOfTimes = {}
@@ -282,7 +297,6 @@ const tenMostSpokenLanguages = languageNumberOfTimesArrayOfArrays.slice().sort((
   } return 0
 }).slice(0, 10)
 
-console.log(tenMostSpokenLanguages);
 
 const buildChartsLanguage = (arr) => {
   arr.forEach(element => {
@@ -291,10 +305,8 @@ const buildChartsLanguage = (arr) => {
     div.innerHTML = `<span>${element[0]} - ${element[1]}</span>`;
     div.style.width = `${(element[1] / 91) * 100}%`;
     div.style.borderRadius = '0px 20px 20px 0px';
-    chartLanguageContainer.appendChild(div);
+    graphs.appendChild(div);
   })
 }
-
-buildChartsLanguage(tenMostSpokenLanguages)
 
 

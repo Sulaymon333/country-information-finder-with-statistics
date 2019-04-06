@@ -228,11 +228,11 @@ h3 {
   .actions {}
 }
 
-.population-chart-container, .language-chart-container, .modal-statistics-content {
+.population-chart-container, .language-chart-container, .graphs {
   display: flex;
   flex-direction: column;
   height: 500px;
-  width: 80%;
+  width: 100%;
   justify-content: space-between;
   align-items: flex-start;
 }
@@ -253,6 +253,7 @@ h3 {
   font-weight: 700;
 }
 
+/* TODO::
 /* <i class="fas fa-sort-alpha-down"></i> */
 
 /* MODAL STYLES */
@@ -263,7 +264,7 @@ h3 {
   align-items: center;
   width: 100%;
   padding: 15px;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
   border-radius: 0.35rem;
 }
 .charts-modal {
@@ -287,7 +288,7 @@ h3 {
   background: rgba(241, 238, 238, 0.952);
   padding: 1.5rem 1.5rem;
   width: 80%;
-  height: 65vh;
+  /* height: 65vh; */
   border-radius: 0.5rem;
 }
 
