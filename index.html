@@ -20,19 +20,30 @@
       <div id="inputs">
         <input id="input" type="text" placeholder="Search countries by name, capital city or population" autofocus />
         <div class="actions">
-          <button class="button" id="name">Sort by Name</button>
-          <button class="button" id="capital">Sort by Capital</button>
-          <button class="button" id="population">Sort by Population</button>
+          <button class="button" id="name"><i class="fas fa-sort-alpha-up"></i> Sort by Name</button>
+          <button class="button" id="capital"><i class="fas fa-sort-alpha-up"></i> Sort by Capital</button>
+          <button class="button" id="population"><i class="fas fa-sort-alpha-up"></i> Sort by Population</button>
+          <button class="button" id="statistics"><i class="fas fa-chart-bar"></i> Statistics</button>
         </div>
       </div>
       <div id="result-text">
-        <h3 class="message">
-
-        </h3>
+        <h3 class="message"></h3>
       </div>
     </div>
     <div class="countries-container"></div>
-    <div class="chart-container"></div>
+    <div class="charts-modal">
+      <div class="modal-statistics-content">
+        <div class="modal-controls">
+          <button class="button modal-btn" id="modal-control-population"><i class="fas fa-sort-amount-down"></i> Top 10
+            Population</button>
+          <button class="button modal-btn" id="modal-control-language"><i class="fas fa-sort-amount-down"></i> Top 10
+            Language</button>
+          <span class="close-button"><i class="far fa-times-circle"></i></span>
+        </div>
+      </div>
+    </div>
+    <div class="population-chart-container" style="margin-top: 50px"></div>
+    <div class="language-chart-container" style="margin-top: 50px"></div>
   </div>
   <script src="./js/countries_information.js"></script>
   <script src="./js/index.js"></script>

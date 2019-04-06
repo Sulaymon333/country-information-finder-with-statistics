@@ -228,17 +228,19 @@ h3 {
   .actions {}
 }
 
-.chart-container {
+.population-chart-container, .language-chart-container, .modal-statistics-content {
   display: flex;
   flex-direction: column;
   height: 500px;
-  width: 90%;
+  width: 80%;
   justify-content: space-between;
   align-items: flex-start;
 }
-.chart-bar {
+.chart-population-bar, .chart-language-bar {
   background: linear-gradient( to bottom right, rgb(231, 156, 15) ,rgb(214, 156, 49));
   background: orange;
+  background: rgb(49, 181, 243);
+  background: linear-gradient(to bottom, rgb(120, 199, 236), rgb(10, 178, 255));
   height: 30px;
   text-align: left;
   padding-left: 5px; 
@@ -246,7 +248,70 @@ h3 {
   /* line-height: 10px; */
   
 }
-.chart-bar span {
-  font-size: 9px;
+.chart-population-bar span, .chart-language-bar span{
+  font-size: 11px;
   font-weight: 700;
+}
+
+/* <i class="fas fa-sort-alpha-down"></i> */
+
+/* MODAL STYLES */
+.modal-controls {
+  background: rgba(204, 201, 201, 0.315);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 12px;
+  border-radius: 0.35rem;
+}
+.charts-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(75, 66, 66, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.1);
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.modal-statistics-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(241, 238, 238, 0.952);
+  padding: 1.5rem 1.5rem;
+  width: 80%;
+  height: 65vh;
+  border-radius: 0.5rem;
+}
+
+.modal-btn:not(:last-child) {
+  margin-right: 20px;
+}
+
+.close-button {
+  margin-left: auto;
+  width: 2rem;
+  line-height: 1.5rem;
+  font-size: 2rem;
+  color: rgb(226, 85, 85); 
+  text-align: center;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  color: red;
+}
+
+.show-modal {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1.0);
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
