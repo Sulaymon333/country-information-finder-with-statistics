@@ -76,7 +76,17 @@ const filterCountriesBySearchTerm = (arr, searchTerm) => {
 // get the clicked button siblings
 
 /*=== ButtonChanger() function ===*/
-const buttonSiblings = buttonName => [...buttonName.parentElement.children].filter(currentButton => currentButton.nodeType === 1 && currentButton != buttonName)
+const buttonSiblings = buttonName => [...buttonName.parentElement.children].filter(currentButton => currentButton.nodeType === 1 && currentButton != buttonName);
+
+const buttonSelected = (buttonName) => {
+  buttonName.classList.add('selected-button')
+  const otherButtons = buttonSiblings(buttonName)
+  otherButtons.forEach((button) => {
+    if (button.classList.contains('selected-button')) {
+      button.classList.remove('selected-button')
+    }
+  })
+}
 
 /*=== inputEvent() function ===*/
 const inputEvent = (e) => {
@@ -88,13 +98,7 @@ const inputEvent = (e) => {
 /*=== SORT FUNCTIONS ===*/
 /*=== sortByName() function ===*/
 const sortByName = () => {
-  sortByNameButton.classList.add('selected-button')
-  const otherButtons = buttonSiblings(sortByNameButton)
-  otherButtons.forEach((button) => {
-    if (button.classList.contains('selected-button')) {
-      button.classList.remove('selected-button')
-    }
-  })
+  buttonSelected(sortByNameButton);
   countriesContainer.innerHTML = '';
   showCountries(filterCountriesBySearchTerm(countriesCopy, inputField.value).sort((a, b) => {
     if (a.name < b.name) {
@@ -109,13 +113,7 @@ const sortByName = () => {
 
 /*=== sortByCapital() function ===*/
 const sortByCapital = () => {
-  sortByCapitalButton.classList.add('selected-button')
-  const otherButtons = buttonSiblings(sortByCapitalButton)
-  otherButtons.forEach((button) => {
-    if (button.classList.contains('selected-button')) {
-      button.classList.remove('selected-button')
-    }
-  })
+  buttonSelected(sortByCapitalButton);
   countriesContainer.innerHTML = '';
   showCountries(filterCountriesBySearchTerm(countriesCopy, inputField.value).sort((a, b) => {
     if (a.capital < b.capital) {
@@ -130,13 +128,7 @@ const sortByCapital = () => {
 
 /*=== sortByCapital() function ===*/
 const sortByPopulation = () => {
-  sortByPopulationButton.classList.add('selected-button')
-  const otherButtons = buttonSiblings(sortByPopulationButton)
-  otherButtons.forEach((button) => {
-    if (button.classList.contains('selected-button')) {
-      button.classList.remove('selected-button')
-    }
-  })
+  buttonSelected(sortByPopulationButton);
   countriesContainer.innerHTML = '';
   showCountries(filterCountriesBySearchTerm(countriesCopy, inputField.value).sort((a, b) => {
     if (a.population < b.population) {
@@ -152,13 +144,7 @@ const sortByPopulation = () => {
 /*=== MODAL Functionality ===*/
 // show modal toggle function
 const toggleModal = () => {
-  statisticsModalButton.classList.add('selected-button')
-  const otherButtons = buttonSiblings(statisticsModalButton)
-  otherButtons.forEach((button) => {
-    if (button.classList.contains('selected-button')) {
-      button.classList.remove('selected-button')
-    }
-  })
+  buttonSelected(statisticsModalButton);
   chartsModal.classList.toggle('show-modal');
 }
 // window click function
@@ -167,23 +153,14 @@ const windowOnclick = (e) => {
     toggleModal()
   }
 }
-const buttonSelected = (buttonName) => {
-  buttonName.classList.add('selected-button')
-  const otherButtons = buttonSiblings(buttonName)
-  otherButtons.forEach((button) => {
-    if (button.classList.contains('selected-button')) {
-      button.classList.remove('selected-button')
-    }
-  })
-}
 
 const populationChart = () => {
-  buttonSelected(modalControlPopulation)
+  buttonSelected(modalControlPopulation);
   graphs.innerHTML = '';
   buildChartsPopulation(tenMostPopulous);
 }
 const languageChart = () => {
-  buttonSelected(modalControlLanguage)
+  buttonSelected(modalControlLanguage);
   graphs.innerHTML = '';
   buildChartsLanguage(tenMostSpokenLanguages)
 }
