@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700');
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700");
 
 /* CSS reset */
 *,
@@ -10,7 +10,7 @@
 }
 
 body {
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   font-size: 16px;
   line-height: 1.7;
   display: flex;
@@ -42,8 +42,10 @@ body {
   margin-top: 25px;
   width: 90%;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  gap: 1rem;
+  justify-content: center;
 }
 
 h1,
@@ -97,8 +99,8 @@ input::-webkit-input-placeholder {
   font-size: 15px;
 }
 
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
@@ -116,9 +118,11 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .selected-button {
-  background: linear-gradient(to right,
+  background: linear-gradient(
+    to right,
     rgba(46, 157, 248, 0.781),
-    rgba(0, 140, 255, 0.89));
+    rgba(0, 140, 255, 0.89)
+  );
   color: white;
   transition: 0.2s ease;
   font-weight: 400;
@@ -181,8 +185,8 @@ h3 {
   width: 130px;
 } */
 
-.country div img {
-  height: 60px;
+.country div span {
+  height: 100px;
   width: 100%;
 }
 
@@ -200,7 +204,6 @@ h3 {
   font-size: 9px;
   margin-top: 10px;
 }
-
 
 .country:hover {
   transform: rotate(-1deg) scale(1.03);
@@ -225,10 +228,13 @@ h3 {
 }
 
 @media (max-width: 600px) {
-  .actions {}
+  .actions {
+  }
 }
 
-.population-chart-container, .language-chart-container, .graphs {
+.population-chart-container,
+.language-chart-container,
+.graphs {
   display: flex;
   flex-direction: column;
   height: 500px;
@@ -236,19 +242,24 @@ h3 {
   justify-content: space-between;
   align-items: flex-start;
 }
-.chart-population-bar, .chart-language-bar {
-  background: linear-gradient( to bottom right, rgb(231, 156, 15) ,rgb(214, 156, 49));
+.chart-population-bar,
+.chart-language-bar {
+  background: linear-gradient(
+    to bottom right,
+    rgb(231, 156, 15),
+    rgb(214, 156, 49)
+  );
   background: orange;
   background: rgb(49, 181, 243);
   background: linear-gradient(to bottom, rgb(120, 199, 236), rgb(10, 178, 255));
   height: 30px;
   text-align: left;
-  padding-left: 5px; 
-  padding-right: 5px; 
+  padding-left: 5px;
+  padding-right: 5px;
   /* line-height: 10px; */
-  
 }
-.chart-population-bar span, .chart-language-bar span{
+.chart-population-bar span,
+.chart-language-bar span {
   font-size: 11px;
   font-weight: 700;
 }
@@ -301,7 +312,7 @@ h3 {
   width: 2rem;
   line-height: 1.5rem;
   font-size: 2rem;
-  color: rgb(226, 85, 85); 
+  color: rgb(226, 85, 85);
   text-align: center;
   cursor: pointer;
 }
@@ -313,6 +324,6 @@ h3 {
 .show-modal {
   opacity: 1;
   visibility: visible;
-  transform: scale(1.0);
+  transform: scale(1);
   transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
